@@ -1,0 +1,16 @@
+{
+  "achievements":[
+    {
+      "habit_id":"512cc158-93b8-4fc3-97e6-d7aea7081385",
+      "experience_points": 1000
+    },
+    {
+      "habit_id":"0eb9ce18-d8d8-4446-a6f2-552e382b8c66",
+      "experience_points": 2825
+    },
+    {
+      "habit_id":"3067d26a-e3c8-4a8d-b82d-257a3d9fc403",
+      "experience_points": 0
+    }
+  ]
+}

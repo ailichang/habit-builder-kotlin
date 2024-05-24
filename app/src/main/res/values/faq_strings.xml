@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="question_habit_tip">General guideline for building a good habit</string>
+    <string name="answer_habit_tip">Making a specific plan for when, where, and how you are going to implement it can help you follow through a habit.
+            \n\nHere\'s a template:
+            \nI will [ACTION] + [CONDITION] at [TIME] in [LOCATION].\n
+            \nFor example: \n&#8226; I will [meditate] for [one minute] at [10 pm] in [my bedroom].
+            \n&#8226; I will [do push ups] for [5 times] at [5pm] in [my living room].
+            \n\nNow, click on the create habit button (the plus button) on Habit page and start your own! </string>
+    <string name="question_create_habit">How to create a habit? </string>
+    <string name="answer_create_habit">" Navigate to the Habit page and click on the plus button and it will direct you to a create habit page for setting up the habit's information and schedule.          You can also click on the question marks if you need more information. After filling out, click on the save button on the top right corner.          Now, you are all set! The missions of this habit is scheduled!"</string>
+    <string name="question_mission">What is a mission? </string>
+    <string name="answer_mission">A mission is a daily task generated from your created habit list.
+        \nIf you scheduled every day for persisting the habit, a new mission regarding this habit will be generated daily.</string>
+    <string name="question_mission_complete">How to set mission as completed? </string>
+    <string name="answer_mission_complete">There are several ways for setting the mission as completed.
+        \nIf your mission\'s condition involves timing, start the timer and the mission will automatically set as completed when time ends.
+        \nHowever, if your mission\'s condition involves counting, click on add button of the counter and the mission will automatically set as completed when you clicked to reach your goal.
+        \nFor quick access, you can also swipe the daily mission card to the right to set the mission as completed.
+        \nNote that if you did not complete the mission on a scheduled day, that mission is counted as incomplete. You can not mark the incomplete missions as complete after the scheduled day.</string>
+    <string name="question_mission_incomplete">How to set mission as incomplete? </string>
+    <string name="answer_mission_incomplete">Swipe the completed mission card to the right to set the mission as incomplete.</string>
+    <string name="question_where_timer">Where is the timer? </string>
+    <string name="answer_where_timer">Only habits marked as timer type have a timer. Click on the daily mission card and you will see the timer in a pop up. </string>
+    <string name="question_where_counter">Where is the counter? </string>
+    <string name="answer_where_counter">Only habits marked as counter type have a counter. Click on the daily mission card and you will see the counter in a pop up. </string>
+    <string name="question_edit_habit">How to edit a habit?</string>
+    <string name="answer_edit_habit">Navigate to habit page and click on the habit card you want to change and then click on the edit button of the expanded card.
+        \nNote that if you change the complete condition of the habit, your daily mission of that habit (and if you scheduled for today) will be set as incomplete and experience points will be deducted.</string>
+    <string name="question_level">How to create new achievement?</string>
+    <string name="answer_level">"A new achievement is create when a new habit is created. "</string>
+    <string name="question_receive_reward_points">How to receive experience points?</string>
+    <string name="answer_receive_reward_points">You can receive the experience points by completing daily missions.
+        \nBy completing higher priority missions, you receive higher experience points.\n\nHigh Priority = 10 pts\nMedium Priority = 5 pts\nLow Priority = 1 pt</string>
+</resources>

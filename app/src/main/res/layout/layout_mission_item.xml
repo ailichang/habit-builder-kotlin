@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/mission_item"
+    style="@style/CardViewBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingHorizontal="5dp"
+                android:layout_weight="3"
+                android:textAppearance="@style/Card.BodyTextStyle"
+                android:id="@+id/mission_time"
+                android:drawablePadding="5dp"
+                tools:text="10:00am-10:30am"
+                app:drawableStartCompat="@drawable/ic_baseline_schedule_24"
+                app:drawableTint="@color/colorOnSurface" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/mission_priority"
+                style="@style/Chip.Action.Priority.High"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                tools:text="HIGH"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:textAppearance="@style/Card.TitleTextStyle"
+            android:id="@+id/mission_title"
+            tools:text="title"/>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            style="@style/CustomProgressBarHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mission_progressbar"
+            tools:max="100"
+            tools:progress="20"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textAppearance="@style/Card.BodyTextStyle"
+            android:id="@+id/mission_progressbar_text"
+            tools:text="1/5"/>
+
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,113 @@
+<resources>
+    <string name="app_name">HabitBuilder</string>
+    <string name="add_habit_fab_des">Add a habit</string>
+    <string name="settings_toolbar_title">Settings</string>
+    <string name="tracker_toolbar_title">Tracker</string>
+    <string name="achievement_toolbar_title">Achievement</string>
+    <string name="habit_toolbar_title">Habit</string>
+    <string name="mission_toolbar_title">Mission</string>
+    <string name="create_habit_toolbar_title">CREATE A GOOD HABIT</string>
+    <string name="edit_habit_toolbar_title">EDIT HABIT</string>
+    <string name="faq_toolbar_title">FAQ</string>
+
+    <string name="habit_title_hint">Give your action a title. For example, ride a bike, drink water or read an article.
+        \nThis title will appear as the title of the habit and also the title of daily mission. </string>
+    <string name="habit_condition_hint">Give your action a complete condition. For example, ride a bike for 30 minutes or drink water for 10 times.
+        \nAfter fulfilling the condition, the mission is set as completed and you will gain experience points.</string>
+    <string name="priority_reward_hint">By completing higher priority missions, you receive higher experience points.\n\nHigh Priority = 10 pts\nMedium Priority = 5 pts\nLow Priority = 1 pt</string>
+    <string name="habit_schedule_hint">By selecting the days, you are scheduling the mission occurrence for every week.</string>
+    <string name="empty_mission_text">There is no mission today. </string>
+    <string name="empty_completed_missions_text">You have not complete any missions yet.</string>
+    <string name="selection_required">*Selection Required</string>
+    <string name="input_required">*Required</string>
+    <string name="priority_high">HIGH PRIORITY</string>
+    <string name="priority_medium">MEDIUM PRIORITY</string>
+    <string name="priority_low">LOW PRIORITY</string>
+    <string name="category_finance">FINANCE</string>
+    <string name="category_fitness">FITNESS</string>
+    <string name="category_health">HEALTH</string>
+    <string name="category_hobby">HOBBY</string>
+    <string name="category_house_chore">HOUSE CHORE</string>
+    <string name="category_learning">LEARNING</string>
+    <string name="category_work">WORK</string>
+    <string name="schedule_every_day">Every day</string>
+    <string name="schedule_every_weekday">Every weekday</string>
+    <string name="schedule_every_weekend">Every weekend</string>
+    <string name="schedule_list_week_of_day_zero">Not scheduled</string>
+    <string name="schedule_list_week_of_day_one">Every %1s</string>
+    <string name="schedule_list_week_of_day_multiple">Every %1s and %2s</string>
+    <string name="day_delimiter">,\u0020</string>
+    <string name="counter_no_repeat">No repeat</string>
+    <plurals name="counter_repeat">
+        <item quantity="one">Repeat %1d time</item>
+        <item quantity="other">Repeat %1d times</item>
+    </plurals>
+    <string name="timer_duration">For %1s </string>
+    <string name="time_any">Any time</string>
+    <string name="time_to" translatable="false">" - "</string>
+    <string name="note">Note</string>
+    <string name="note_none">(None)</string>
+    <string name="location_anywhere">Anywhere</string>
+    <plurals name="experience_points">
+        <item quantity="one">%1d experience point</item>
+        <item quantity="other">%1d experience points</item>
+    </plurals>
+    <string name="edit_button">EDIT</string>
+    <string name="completed_missions">Completed Missions</string>
+    <string name="daily_missions">Daily Missions</string>
+    <string name="toast_habit_created">Habit Created</string>
+    <string name="toast_habit_updated">Habit Updated</string>
+    <string name="toast_habit_deleted">Habit Deleted</string>
+    <string name="toast_timer_done">"TIME'S UP! MISSION COMPLETED!"</string>
+    <string name="counter">Counter</string>
+    <string name="counter_reset">RESET</string>
+    <string name="counter_minus" translatable="false">-1</string>
+    <string name="counter_add" translatable="false">+1</string>
+    <string name="timer">Timer</string>
+    <string name="timer_start">START</string>
+    <string name="timer_resume">RESUME</string>
+    <string name="timer_pause">PAUSE</string>
+    <string name="timer_reset">RESET</string>
+    <string name="toast_mission_completed">MISSION COMPLETED!</string>
+    <string name="chip_sunday">Sunday</string>
+    <string name="chip_monday">Monday</string>
+    <string name="chip_tuesday">Tuesday</string>
+    <string name="chip_wednesday">Wednesday</string>
+    <string name="chip_thursday">Thursday</string>
+    <string name="chip_friday">Friday</string>
+    <string name="chip_saturday">Saturday</string>
+    <string name="dialog_complete_mission_title">Have you complete mission “%1s”?</string>
+    <string name="dialog_complete">Complete</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="time_picker_select_end_time">Select end time</string>
+    <string name="time_picker_select_start_time">Select start time</string>
+    <string name="habit_editor_title">Title</string>
+    <string name="habit_text_input_title_hint">eg. Take a walk, Gardening</string>
+    <string name="habit_complete_condition">Complete Condition</string>
+    <string name="habit_priority">Priority</string>
+    <string name="habit_mission_schedule">Mission Schedule</string>
+    <string name="habit_category">Category</string>
+    <string name="habit_notes">Notes</string>
+    <string name="habit_text_input_note_hint">Notes for this habit</string>
+    <string name="habit_text_input_location">Location</string>
+    <string name="habit_text_input_end_time">End Time</string>
+    <string name="habit_text_input_start_time">Start Time</string>
+    <string name="habit_text_input_duration">Duration</string>
+    <string name="habit_text_input_count">Count</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="error_count_number">Please enter a nonzero number for counting!</string>
+    <string name="error_empty_title">Please enter a title for this habit!</string>
+    <string name="error_target_duration">Please pick a time for target duration!</string>
+    <string name="tracker_start_date">Start Date:</string>
+    <string name="achievement">Achievement</string>
+    <string name="level">Lv. %d</string>
+    <string name="experience_points">Experience Points:</string>
+    <string name="permanently_delete_habit">Permanently delete this habit?</string>
+    <string name="permanently_delete_habit_message">This habit and its related tracking record and achievement will be permanently deleted. This action can\'t be undone.</string>
+    <string name="version">Version</string>
+    <string name="general">General</string>
+    <string name="scheduled_time">scheduled time</string>
+    <string name="expand_button">expand button</string>
+    <string name="colon" translatable="false">:</string>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.chip.ChipGroup
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:chipSpacingHorizontal="3dp"
+    app:selectionRequired="true"
+    android:id="@+id/weekday_chip_group">
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_sunday"
+        style="@style/Chip.Filter.WeekOfDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/chip_sunday"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_monday"
+        style="@style/Chip.Filter.WeekOfDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/chip_monday"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_tuesday"
+        style="@style/Chip.Filter.WeekOfDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/chip_tuesday"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_wednesday"
+        style="@style/Chip.Filter.WeekOfDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/chip_wednesday"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_thursday"
+        style="@style/Chip.Filter.WeekOfDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/chip_thursday"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_friday"
+        style="@style/Chip.Filter.WeekOfDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/chip_friday"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_saturday"
+        style="@style/Chip.Filter.WeekOfDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/chip_saturday"/>
+
+</com.google.android.material.chip.ChipGroup>

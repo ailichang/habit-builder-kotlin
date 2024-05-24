@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp"
+            android:id="@+id/mission_info">
+
+            <TextView
+                android:id="@+id/mission_condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:textAppearance="@style/Dialog.BodyTextStyle"
+                app:drawableStartCompat="@drawable/ic_baseline_repeat_24"
+                app:drawableTint="@color/colorOnSurface"
+                tools:text="Repeat 10 times" />
+
+            <TextView
+                android:id="@+id/mission_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:textAppearance="@style/Dialog.BodyTextStyle"
+                app:drawableStartCompat="@drawable/ic_baseline_schedule_24"
+                app:drawableTint="@color/colorOnSurface"
+                tools:text="10:00am-10:30am"/>
+
+            <TextView
+                android:id="@+id/mission_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:textAppearance="@style/Dialog.BodyTextStyle"
+                app:drawableStartCompat="@drawable/ic_baseline_place_24"
+                app:drawableTint="@color/colorOnSurface"
+                tools:text="At desk" />
+
+            <TextView
+                android:id="@+id/mission_reward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:textAppearance="@style/Dialog.BodyTextStyle"
+                app:drawableStartCompat="@drawable/ic_baseline_card_giftcard_24"
+                app:drawableTint="@color/colorOnSurface"
+                tools:text="Receive 10 pts"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:textAppearance="@style/Dialog.BodyTextStyle"
+                android:text="@string/note"
+                app:drawableStartCompat="@drawable/ic_baseline_article_24"
+                app:drawableTint="@color/colorOnSurface"/>
+            <TextView
+                android:id="@+id/mission_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:textAppearance="@style/Dialog.BodyTextStyle"
+                tools:text="(None)"/>
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/mission_tool_view">
+
+            <LinearLayout
+                android:id="@+id/mission_timer_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/timer"
+                    android:gravity="center"
+                    android:textAppearance="@style/Dialog.TitleTextStyle"
+                    android:id="@+id/mission_timer_title"/>
+
+
+                <TextView
+                    android:id="@+id/mission_timer_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="60sp"
+                    tools:text="10:20:20"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/timer_cancel_button"
+                        style="@style/Dialog.ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="@android:string/cancel" />
+
+                    <Button
+                        android:id="@+id/timer_reset_button"
+                        style="@style/Dialog.ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="@string/timer_reset" />
+
+                    <Button
+                        android:id="@+id/timer_pause_button"
+                        style="@style/Dialog.ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="@string/timer_pause" />
+
+                    <Button
+                        android:id="@+id/timer_start_button"
+                        style="@style/Dialog.ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="@string/timer_start" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/mission_counter_view"
+                android:layout_marginBottom="20dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/counter"
+                    android:gravity="center"
+                    android:textAppearance="@style/Dialog.TitleTextStyle"
+                    android:id="@+id/mission_counter_title"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_gravity="center"
+                    android:textSize="60sp"
+                    android:id="@+id/mission_counter_number"
+                    tools:text="79/100"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/counter_plus_button"
+                        style="@style/Dialog.ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="@string/counter_add" />
+
+                    <Button
+                        android:id="@+id/counter_minus_button"
+                        style="@style/Dialog.ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="@string/counter_minus" />
+
+                    <Button
+                        android:id="@+id/counter_reset_button"
+                        style="@style/Dialog.ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="@string/counter_reset" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>
+

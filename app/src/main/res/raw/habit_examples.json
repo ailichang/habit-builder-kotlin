@@ -1,0 +1,45 @@
+{
+  "habits": [
+    {
+      "id": "512cc158-93b8-4fc3-97e6-d7aea7081385",
+      "title": "Take a walk",
+      "description": "Take a walk and enjoy summer :)",
+      "type": "TIMER",
+      "start_time": "11:00",
+      "end_time": "12:00",
+      "location": "park",
+      "target_duration": 600,
+      "priority": 0,
+      "category":"FITNESS",
+      "frequency": "EVERYDAY",
+      "scheduled_days": [true, true, true, false, true, true, true]
+    },
+    {
+      "id": "0eb9ce18-d8d8-4446-a6f2-552e382b8c66",
+      "title": "Jump rope",
+      "description": "Do some exercise :)",
+      "start_time": "14:00",
+      "location": "desk",
+      "type": "COUNTER",
+      "target_count": 10,
+      "priority": 2,
+      "category": "HEALTH",
+      "frequency": "EVERY_TWO_DAYS",
+      "scheduled_days": [true, false, true, false, true, false, true]
+    },
+    {
+      "id": "3067d26a-e3c8-4a8d-b82d-257a3d9fc403",
+      "title": "update habit app",
+      "description": "Do and learn :)",
+      "start_time": "03:00",
+      "location": "pc",
+      "type": "COUNTER",
+      "target_count": 1,
+      "priority": 1,
+      "category": "LEARNING",
+      "frequency": "EVERY_THREE_DAYS",
+      "scheduled_days": [true, true, true, false, true, true, true]
+    }
+
+  ]
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_achievement"
+        android:enabled="true"
+        android:icon="@drawable/ic_award_star_24"
+        android:title="@string/achievement_toolbar_title"/>
+
+    <item
+        android:id="@+id/nav_habit"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_flag_24"
+        android:title="@string/habit_toolbar_title"/>
+
+
+    <item
+        android:id="@+id/nav_mission"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_assignment_24"
+        android:title="@string/mission_toolbar_title"/>
+
+    <item
+        android:id="@+id/nav_tracker"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_insert_chart_24"
+        android:title="@string/tracker_toolbar_title"/>
+
+    <item
+        android:id="@+id/nav_settings"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/settings_toolbar_title"/>
+
+</menu>

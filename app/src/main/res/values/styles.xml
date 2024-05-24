@@ -1,0 +1,65 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:timePickerDialogTheme">@style/TimePickerStyle</item>
+<!--        <item name="android:statusBarColor">?android:attr/windowBackground</item>-->
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+    </style>
+
+
+    <style name="CustomProgressBarHorizontal" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="trackThickness">10dp</item>
+        <item name="trackCornerRadius">5dp</item>
+        <item name="trackColor">@color/colorOnTertiary</item>
+        <item name="indicatorColor">@color/colorTertiary</item>>
+    </style>
+
+    <style name="CustomDisabledProgressBarHorizontal" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="trackThickness">10dp</item>
+        <item name="trackCornerRadius">5dp</item>
+        <item name="trackColor">@color/colorOutline</item>
+        <item name="indicatorColor">@color/colorOutline</item>>
+    </style>
+
+    <style name="TimePickerStyle" parent="Widget.Material3.MaterialTimePicker">
+        <item name="android:timePickerMode">spinner</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="CustomTextFieldInputStyle" parent="Widget.Material3.TextInputEditText.OutlinedBox.Dense">
+        <item name="android:textSize">16sp</item>
+        <item name="hintEnabled">true</item>
+        <item name="errorTextColor">@color/colorError</item>
+    </style>
+
+    <style name="HeaderTextStyle" parent="@style/TextAppearance.Material3.HeadlineLarge"><!--32sp-->
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Article.TitleTextStyle" parent="@style/TextAppearance.Material3.TitleLarge"><!--22sp-->
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="Article.BodyTextStyle" parent="@style/TextAppearance.Material3.BodyLarge"/><!--16sp-->
+    <style name="Article.HintTextStyle" parent="@style/TextAppearance.Material3.LabelSmall"/><!--11sp-->
+    <style name="Dialog.ButtonStyle" parent="Widget.Material3.Button">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="Dialog.TitleTextStyle" parent="@style/TextAppearance.Material3.HeadlineSmall"/> <!--28sp-->
+    <style name="Dialog.BodyTextStyle" parent="@style/TextAppearance.Material3.BodyLarge"/> <!--16sp-->
+    <style name="HabitGraph.TitleTextStyle" parent="@style/TextAppearance.Material3.HeadlineMedium"/>
+
+    <style name="HabitGraph.BodyTextStyle" parent="@style/TextAppearance.Material3.BodyLarge"/> <!--16sp-->
+    <style name="Card.TitleTextStyle" parent="@style/TextAppearance.Material3.HeadlineSmall"/> <!--24sp-->
+    <style name="Card.BodyTextStyle" parent="@style/TextAppearance.Material3.BodyLarge"/> <!--16sp-->
+    <style name="CardViewBackground" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/colorSurface</item>
+        <item name="cardCornerRadius">10dp</item>
+        <item name="cardPreventCornerOverlap">true</item>
+    </style>
+    <style name="CardViewBackground.Disabled" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/colorSurfaceDim</item>
+    </style>
+</resources>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    style="@style/CardViewBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Card.TitleTextStyle"
+            android:id="@+id/habit_title"
+            tools:text="title"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.Chip
+                style="@style/Chip.Action.Priority.High"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:id="@+id/habit_priority"
+                tools:text="High Priority"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Chip.Action.Category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:id="@+id/habit_category"
+                app:chipIconVisible="true"
+                app:chipIconTint="@color/tagWhite"
+                app:chipBackgroundColor="@color/tagBlue"
+                tools:text="health"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/habit_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="2dp"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:textAppearance="@style/Card.BodyTextStyle"
+            app:drawableStartCompat="@drawable/ic_baseline_repeat_24"
+            app:drawableTint="@color/colorOnSurface"
+            tools:text="Repeat 10 times"/>
+        <TextView
+            android:id="@+id/habit_scheduled_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="2dp"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:textAppearance="@style/Card.BodyTextStyle"
+            app:drawableStartCompat="@drawable/ic_baseline_calendar_today_24"
+            app:drawableTint="@color/colorOnSurface"
+            tools:text="Every Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"/>
+        <LinearLayout
+            android:id="@+id/task_expandable_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/habit_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="2dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/Card.BodyTextStyle"
+                app:drawableStartCompat="@drawable/ic_baseline_schedule_24"
+                app:drawableTint="@color/colorOnSurface"
+                tools:text="10:00am-10:30am"/>
+            <TextView
+                android:id="@+id/habit_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="2dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/Card.BodyTextStyle"
+                app:drawableStartCompat="@drawable/ic_baseline_place_24"
+                app:drawableTint="@color/colorOnSurface"
+                tools:text="At desk"/>
+            <TextView
+                android:id="@+id/habit_reward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="2dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/Card.BodyTextStyle"
+                app:drawableStartCompat="@drawable/ic_baseline_card_giftcard_24"
+                app:drawableTint="@color/colorOnSurface"
+                tools:text="Receive 10 pts"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="2dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/Card.BodyTextStyle"
+                android:text="@string/note"
+                app:drawableStartCompat="@drawable/ic_baseline_article_24"
+                app:drawableTint="@color/colorOnSurface"/>
+            <TextView
+                android:id="@+id/habit_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:layout_marginHorizontal="30dp"
+                tools:text="(None)"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="4dp">
+
+                <Button
+                    android:id="@+id/edit_habit_button"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/edit_button" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

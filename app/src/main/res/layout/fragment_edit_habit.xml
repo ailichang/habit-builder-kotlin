@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <include layout="@layout/layout_app_bar"/>-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+<!--        android:layout_below="@+id/app_bar_layout">-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:id="@+id/habit_title_title"
+                    style="@style/Article.TitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/habit_editor_title" />
+
+                <ImageView
+                    android:id="@+id/habit_title_help"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@+id/habit_title_title"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/ic_baseline_help_outline_24"
+                    android:importantForAccessibility="no"
+                    app:tint="@color/colorOnSurface"
+                    app:tintMode="src_in"/>
+
+                <TextView
+                    style="@style/Article.HintTextStyle"
+                    android:id="@+id/habit_title_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/input_required" />
+            </RelativeLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomTextFieldInputStyle"
+                android:id="@+id/habit_title_text_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/habit_text_input_title_hint">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    style="@style/Article.BodyTextStyle"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:id="@+id/habit_condition_title"
+                    style="@style/Article.TitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/habit_complete_condition" />
+
+                <ImageView
+                    android:id="@+id/habit_condition_help"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@+id/habit_condition_title"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/ic_baseline_help_outline_24"
+                    android:importantForAccessibility="no"
+                    app:tint="@color/colorOnSurface"
+                    app:tintMode="src_in" />
+
+                <TextView
+                    style="@style/Article.HintTextStyle"
+                    android:id="@+id/habit_condition_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/input_required" />
+            </RelativeLayout>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:id="@+id/habit_type_radiogroup">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/counter"
+                    android:checked="true"
+                    style="@style/Article.BodyTextStyle"
+                    android:id="@+id/habit_counter_radio_button"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/timer"
+                    style="@style/Article.BodyTextStyle"
+                    android:id="@+id/habit_timer_radio_button"/>
+
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomTextFieldInputStyle"
+                android:id="@+id/habit_counter_text_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/habit_text_input_count">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    style="@style/Article.BodyTextStyle"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomTextFieldInputStyle"
+                android:id="@+id/habit_timer_text_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/habit_text_input_duration"
+                android:visibility="gone">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    style="@style/Article.BodyTextStyle"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/habit_priority_title"
+                    style="@style/Article.TitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/habit_priority" />
+
+                <ImageView
+                    android:id="@+id/habit_priority_help"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@+id/habit_priority_title"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/ic_baseline_help_outline_24"
+                    android:importantForAccessibility="no"
+                    app:tint="@color/colorOnSurface"
+                    app:tintMode="src_in"/>
+
+                <TextView
+                    style="@style/Article.HintTextStyle"
+                    android:id="@+id/habit_priority_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/selection_required" />
+            </RelativeLayout>
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                android:id="@+id/habit_priority_chip_group">
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Chip.Filter.Priority.High"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/priority_high"
+                    android:id="@+id/habit_priority_high_button"/>
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Chip.Filter.Priority.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/priority_medium"
+                    android:id="@+id/habit_priority_medium_button"/>
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Chip.Filter.Priority.Low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/priority_low"
+                    android:id="@+id/habit_priority_low_button"
+                    android:checked="true"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/habit_schedule_title"
+                    style="@style/Article.TitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/habit_mission_schedule"/>
+
+                <ImageView
+                    android:id="@+id/habit_schedule_help"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@+id/habit_schedule_title"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_baseline_help_outline_24"
+                    android:importantForAccessibility="no"
+                    app:tint="@color/colorOnSurface"
+                    app:tintMode="src_in" />
+
+                <TextView
+                    style="@style/Article.HintTextStyle"
+                    android:id="@+id/habit_schedule_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/selection_required" />
+            </RelativeLayout>
+
+            <include layout="@layout/layout_week_chip_group"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomTextFieldInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/habit_text_input_start_time"
+                android:id="@+id/habit_start_time_text_field">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    style="@style/Article.BodyTextStyle"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomTextFieldInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/habit_text_input_end_time"
+                android:id="@+id/habit_end_time_text_field">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    style="@style/Article.BodyTextStyle"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomTextFieldInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/habit_text_input_location"
+                android:id="@+id/habit_location_text_field">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Article.BodyTextStyle"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/habit_category"
+                style="@style/Article.TitleTextStyle"/>
+
+            <include layout="@layout/layout_category_chip_group" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/habit_notes"
+                style="@style/Article.TitleTextStyle"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomTextFieldInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="260dp"
+                android:hint="@string/habit_text_input_note_hint"
+                android:id="@+id/habit_description_text_field">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:inputType="textMultiLine"
+                    android:gravity="top|start"
+                    style="@style/Article.BodyTextStyle"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

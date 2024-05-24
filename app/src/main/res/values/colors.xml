@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/material_dynamic_primary50</color>
+    <color name="colorOnPrimary">@color/material_dynamic_primary100</color>
+    <color name="colorOutline">@color/material_dynamic_neutral_variant50</color>
+    <color name="colorTertiary">@color/material_dynamic_tertiary40</color>
+    <color name="colorOnTertiary">@color/material_dynamic_tertiary80</color>
+    <color name="colorError">@color/design_default_color_error</color>
+    <color name="colorSurface">@color/material_dynamic_neutral95</color>
+    <color name="colorSurfaceDim">@color/material_dynamic_neutral60</color>
+    <color name="colorOnSurface">@color/material_dynamic_neutral20</color>
+    <color name="colorOnSurfaceDim">@color/material_dynamic_neutral40</color>
+
+    <color name="tagWhite">#fff</color>
+    <color name="tagRed">#F44336</color>
+    <color name="tagOrange">#FF6F00</color>
+    <color name="tagYellow">#FFBF00</color>
+    <color name="tagGreen">#4CAF50</color>
+    <color name="tagBlue">#2196F3</color>
+    <color name="tagNavy">#000080</color>
+    <color name="tagPurple">#9C27B0</color>
+    <color name="tagPink">#E91E63</color>
+    <color name="markerWhite">@color/material_dynamic_neutral100</color>
+    <color name="markerLightGrey">@color/material_dynamic_neutral90</color>
+    <color name="markerGrey">@color/material_dynamic_neutral60</color>
+</resources>

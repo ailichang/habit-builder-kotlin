@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="question_habit_tip">建立好習慣的準則</string>
+    <string name="answer_habit_tip">制定一個具體的計劃，包括何時、何地以及如何實施，可以幫助你堅持養成習慣。
+        \n\n以下是一個模板：
+        \n我將在[時間]在[地點][條件]下進行[行動]。\n
+        \n例如：\n&#8226;我將在[晚上10點]在[我的臥室][一分鐘]進行[冥想]。
+        \n&#8226;我將在[下午5點]在[我的客廳][五次]進行[俯臥撐]。
+        \n\n現在，點擊習慣頁面上的創建習慣按鈕（加號按鈕），開始建立你的習慣吧！</string>
+    <string name="question_create_habit">如何新增習慣?</string>
+    <string name="answer_create_habit"> 到習慣頁面，點擊綠色的加號按鈕，它會將你引導到創建習慣頁面。你可以用此頁面設置習慣的資訊和時間表。
+        \n如果需要更多信息，也可以點擊問號。\n填寫完畢後，點擊右上角的保存按鈕。\n現在，你已經完成了！這個習慣的任務已經安排好了！</string>
+    <string name="question_mission">任務是什麼?</string>
+    <string name="answer_mission">任務是從你創建的習慣列表中生成的每日任務。\n如果你安排了每天堅持這個習慣，關於這個習慣的新任務將每天生成。</string>
+    <string name="question_mission_complete">如何將任務設置為完成?</string>
+    <string name="answer_mission_complete">有幾種方法可以將任務設置為完成：\n
+        \n&#8226;在任務頁面點擊任務卡，點擊彈出窗口中的完成按鈕。
+        \n&#8226;如果你的任務條件是計時型態，在任務頁面點擊任務卡，啟動計時器，當時間結束時，任務會自動設置為完成。
+        \n&#8226;如果你的任務條件是計數型態，在任務頁面點擊任務卡，點擊計數器的+1按鈕，當你點擊達到目標時，任務會自動設置為完成。
+        \n&#8226;你也可以在任務頁面向右滑動任務卡，將任務設置為完成。
+        \n請注意，如果你在計劃的日期沒有完成任務，該任務將被計算為未完成。在計劃日期之後，你不能將未完成的任務標記為完成。</string>
+    <string name="question_mission_incomplete">How to set mission as incomplete? </string>
+    <string name="answer_mission_incomplete">Swipe the completed mission card to the right to set the mission as incomplete.</string>
+    <string name="question_where_timer">計時器在哪裡?</string>
+    <string name="answer_where_timer">只有標記為計時器類型的習慣才有計時器。點擊每日任務卡，你會看到彈出窗口中的計時器。</string>
+    <string name="question_where_counter">計數器在哪裡?</string>
+    <string name="answer_where_counter">只有標記為計數器類型的習慣才有計數器。點擊每日任務卡，你會看到彈出窗口中的計數器。</string>
+    <string name="question_edit_habit">如何編輯習慣?</string>
+    <string name="answer_edit_habit">到習慣頁面，點擊你想要更改的習慣卡，然後點擊展開卡片的編輯按鈕。
+        \n請注意，如果你更改了習慣的完成條件，該習慣的今日已完成任務將被設置為未完成，並且獲得經驗值會被扣除。</string>
+    <string name="question_level">如何新增成就?</string>
+    <string name="answer_level">當建立新習慣時，新成就會一起生成。 </string>
+    <string name="question_receive_reward_points">如何獲得經驗值?</string>
+    <string name="answer_receive_reward_points">你可以通過完成每日任務來獲得經驗值。\n完成優先順序較高的任務，你將獲得更多的經驗值。\n\n高優先順序 = 10 分\n中優先順序 = 5 分\n低優先順序 = 1 分</string>
+</resources>

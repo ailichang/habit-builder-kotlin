@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Chip.Action.Priority" parent="Widget.Material3.Chip.Input">
+        <item name="android:textAppearance">@style/Card.BodyTextStyle</item>
+        <item name="android:textStyle">bold</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipBackgroundColor">@color/colorSurface</item>
+        <item name="android:checkable">false</item>
+        <item name="android:clickable">false</item>
+        <item name="chipIconVisible">false</item>
+        <item name="closeIconVisible">false</item>
+    </style>
+
+    <style name="Chip.Action.Priority.Disabled" parent="Chip.Action.Priority">
+        <item name="android:clickable">false</item>
+        <item name="android:textColor">@color/colorOnSurfaceDim</item>
+        <item name="chipStrokeColor">@color/colorOnSurfaceDim</item>
+        <item name="chipBackgroundColor">@color/colorSurfaceDim</item>
+    </style>
+
+    <style name="Chip.Action.Priority.High" parent="Chip.Action.Priority">
+        <item name="android:textColor">@color/tagRed</item>
+        <item name="chipStrokeColor">@color/tagRed</item>
+    </style>
+
+    <style name="Chip.Filter.Priority" parent="Widget.Material3.Chip.Filter">
+        <item name="android:checkable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="checkedIconVisible">true</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="Chip.Filter.Priority.High" parent="Chip.Filter.Priority">
+        <item name="android:textColor">@color/tagRed</item>
+        <item name="chipStrokeColor">@color/tagRed</item>
+        <item name="checkedIconTint">@color/tagRed</item>
+    </style>
+
+    <style name="Chip.Filter.Priority.Medium" parent="Chip.Filter.Priority">
+        <item name="android:textColor">@color/tagYellow</item>
+        <item name="chipStrokeColor">@color/tagYellow</item>
+        <item name="checkedIconTint">@color/tagYellow</item>
+    </style>
+
+    <style name="Chip.Filter.Priority.Low" parent="Chip.Filter.Priority">
+        <item name="android:textColor">@color/tagBlue</item>
+        <item name="chipStrokeColor">@color/tagBlue</item>
+        <item name="checkedIconTint">@color/tagBlue</item>
+    </style>
+
+    <style name="Chip.Filter.Category" parent="Widget.Material3.Chip.Filter">
+        <item name="android:checkable">true</item>
+        <item name="chipIconVisible">false</item>
+        <item name="checkedIconVisible">true</item>
+        <item name="checkedIconTint">@color/tagWhite</item>
+        <item name="android:textColor">@color/tagWhite</item>
+        <item name="android:textAlignment">center</item>
+        <item name="chipStrokeWidth">1dp</item>
+    </style>
+
+    <style name="Chip.Action.Category" parent="Widget.Material3.Chip.Input">
+        <item name="android:checkable">false</item>
+        <item name="android:clickable">false</item>
+        <item name="chipIconVisible">false</item>
+        <item name="checkedIconVisible">true</item>
+        <item name="checkedIconTint">@color/tagWhite</item>
+        <item name="android:textColor">@color/tagWhite</item>
+        <item name="android:textAlignment">center</item>
+        <item name="closeIconVisible">false</item>
+    </style>
+
+    <style name="Chip.Filter.WeekOfDay" parent="Widget.Material3.Chip.Filter">
+        <item name="android:checkable">true</item>
+        <item name="chipIconVisible">false</item>
+        <item name="checkedIconVisible">true</item>
+        <item name="android:textAlignment">center</item>
+        <item name="chipStrokeWidth">1dp</item>
+    </style>
+</resources>
