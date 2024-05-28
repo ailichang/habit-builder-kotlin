@@ -15,7 +15,6 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.MenuHost
@@ -36,6 +35,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -292,17 +292,17 @@ class HabitEditorFragment : Fragment(){
 
     private fun insertHabit(habit: Habit) {
         habitEditorViewModel.insert(habit)
-        Toast.makeText(context, getText(R.string.toast_habit_created), Toast.LENGTH_SHORT).show()
+        Snackbar.make(requireView(),getText(R.string.message_habit_created), Snackbar.LENGTH_SHORT ).show()
     }
 
     private fun updateHabit(oldHabit:Habit, newHabit:Habit) {
         habitEditorViewModel.update(oldHabit, newHabit)
-        Toast.makeText(context, getText(R.string.toast_habit_updated), Toast.LENGTH_SHORT).show()
+        Snackbar.make(requireView(),getText(R.string.message_habit_updated), Snackbar.LENGTH_SHORT ).show()
     }
 
-    private fun deleteHabit(habit: Habit) { //archive this instead of real deletion, to keep habit reference for record
+    private fun deleteHabit(habit: Habit) {
         habitEditorViewModel.delete(habit)
-        Toast.makeText(context, getText(R.string.toast_habit_deleted), Toast.LENGTH_SHORT).show()
+        Snackbar.make(requireView(),getText(R.string.message_habit_deleted), Snackbar.LENGTH_SHORT ).show()
     }
 
     private fun setUpHabitEditor() {

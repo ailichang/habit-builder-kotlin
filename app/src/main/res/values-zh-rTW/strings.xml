@@ -54,11 +54,11 @@
     <string name="edit_button">編輯</string>
     <string name="completed_missions">已完成</string>
     <string name="daily_missions">今日任務</string>
-    <string name="toast_habit_created">已新增</string>
-    <string name="toast_habit_updated">已更新</string>
-    <string name="toast_habit_deleted">已刪除</string>
-    <string name="toast_timer_done">計時完成！</string>
-    <string name="toast_mission_completed">任務已完成！</string>
+    <string name="message_habit_created">已新增</string>
+    <string name="message_habit_updated">已更新</string>
+    <string name="message_habit_deleted">已刪除</string>
+    <string name="message_timer_done">計時完成！</string>
+    <string name="message_mission_completed">任務已完成！</string>
     <string name="counter">計數器</string>
     <string name="counter_reset">重置</string>
     <string name="timer">計時器</string>
