@@ -55,10 +55,10 @@
     <string name="edit_button">EDIT</string>
     <string name="completed_missions">Completed Missions</string>
     <string name="daily_missions">Daily Missions</string>
-    <string name="toast_habit_created">Habit Created</string>
-    <string name="toast_habit_updated">Habit Updated</string>
-    <string name="toast_habit_deleted">Habit Deleted</string>
-    <string name="toast_timer_done">"TIME'S UP! MISSION COMPLETED!"</string>
+    <string name="message_habit_created">Habit Created</string>
+    <string name="message_habit_updated">Habit Updated</string>
+    <string name="message_habit_deleted">Habit Deleted</string>
+    <string name="message_timer_done">"TIME'S UP! MISSION COMPLETED!"</string>
     <string name="counter">Counter</string>
     <string name="counter_reset">RESET</string>
     <string name="counter_minus" translatable="false">-1</string>
@@ -68,7 +68,7 @@
     <string name="timer_resume">RESUME</string>
     <string name="timer_pause">PAUSE</string>
     <string name="timer_reset">RESET</string>
-    <string name="toast_mission_completed">MISSION COMPLETED!</string>
+    <string name="message_mission_completed">MISSION COMPLETED!</string>
     <string name="chip_sunday">Sunday</string>
     <string name="chip_monday">Monday</string>
     <string name="chip_tuesday">Tuesday</string>
