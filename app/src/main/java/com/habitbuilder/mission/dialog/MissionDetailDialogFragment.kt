@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
 import com.habitbuilder.R
 import com.habitbuilder.habit.data.Type
 import com.habitbuilder.mission.MissionFragment
@@ -21,10 +21,17 @@ import com.habitbuilder.util.TimeUtil
 import com.habitbuilder.util.WidgetFormatter.Companion.setCondition
 import com.habitbuilder.util.WidgetFormatter.Companion.setTime
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.habitbuilder.habit.data.Habit
+import com.habitbuilder.mission.data.Mission
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MissionDetailDialogFragment: DialogFragment() {
+class MissionDetailDialogFragment(private val missionDetailDialogCallback: MissionDetailDialogCallback): DialogFragment() {
+    interface MissionDetailDialogCallback{
+        fun onIncreaseExperiencePoints(habit: Habit)
+        fun onUpdateMission(mission:Mission)
+    }
+
     private lateinit var dialogView: View
     private lateinit var  counterView: View
     private lateinit var  timerView: View
@@ -37,7 +44,6 @@ class MissionDetailDialogFragment: DialogFragment() {
     private lateinit var  counterResetButton: Button
     private lateinit var  timerText: TextView
     private lateinit var  counterNum: TextView
-    private lateinit var missionDetailViewModel: MissionDetailViewModel
     private var currentMissionDetail: MissionDetail? = null
     private var timerRemainingTime: MutableLiveData<Long>? = null
     private var counterCurrentCount: MutableLiveData<Int>? = null
@@ -51,7 +57,6 @@ class MissionDetailDialogFragment: DialogFragment() {
             }
         }
 
-        missionDetailViewModel = ViewModelProvider(this)[MissionDetailViewModel::class.java]
         val dialogBuilder = MaterialAlertDialogBuilder(requireActivity())
         dialogView = requireActivity().layoutInflater.inflate(R.layout.dialog_mission_detail, null, false)
         val titleView = requireActivity().layoutInflater.inflate(
@@ -72,7 +77,10 @@ class MissionDetailDialogFragment: DialogFragment() {
             .setCustomTitle(titleView)
             .setView(dialogView)
             .setPositiveButton(R.string.dialog_complete) { _, _ ->
-                currentMissionDetail?.mission?.setMissionCompleted(true)
+                currentMissionDetail?.apply{
+                    this.mission.setMissionCompleted(true)
+                    missionDetailDialogCallback.onIncreaseExperiencePoints(this.habit)
+                }
                 dismiss()
             }
             .setNegativeButton(R.string.dialog_cancel) { _, _ -> dismiss() }
@@ -102,12 +110,12 @@ class MissionDetailDialogFragment: DialogFragment() {
         val note = dialogView.findViewById<TextView>(R.id.mission_note)
 
         currentMissionDetail?.let {
-            val rewardText = dialogView.resources.getQuantityString(
+            val experiencePointsText = dialogView.resources.getQuantityString(
                 R.plurals.experience_points,
                 it.habit.experiencePoints.toInt(),
                 it.habit.experiencePoints.toInt()
             )
-            reward.text = rewardText
+            reward.text = experiencePointsText
             setCondition(condition, it.habit)
             location.text = if (TextUtils.isEmpty(it.habit.location)) location.context.getString(R.string.location_anywhere) else it.habit.location
             setTime(time, it.habit.startTime, it.habit.endTime)
@@ -131,9 +139,7 @@ class MissionDetailDialogFragment: DialogFragment() {
                     }
                 }
             }
-            val args = Bundle()
-            args.putParcelable(MissionFragment.MISSION_KEY, it)
-            missionDetailViewModel.update(it)
+            missionDetailDialogCallback.onUpdateMission(it.mission)
         }
         timerRemainingTime?.removeObservers(this)
         counterCurrentCount?.removeObservers(this)
@@ -162,6 +168,7 @@ class MissionDetailDialogFragment: DialogFragment() {
                         timerPauseButton.visibility = View.GONE
                         timerCancelButton.visibility = View.GONE
                         detail.mission.setMissionCompleted(true)
+                        missionDetailDialogCallback.onIncreaseExperiencePoints(detail.habit)
                         dismiss()
                     }
                 }
@@ -211,6 +218,7 @@ class MissionDetailDialogFragment: DialogFragment() {
                     counterNum.text = counter.progressText
                     if (counter.isTargetReached) {
                         detail.mission.setMissionCompleted(true)
+                        missionDetailDialogCallback.onIncreaseExperiencePoints(detail.habit)
                         dismiss()
                     }
                 }

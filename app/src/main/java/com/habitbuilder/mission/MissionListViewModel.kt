@@ -7,7 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
+import com.habitbuilder.IoDispatcher
 import com.habitbuilder.achievement.data.AchievementRepository
+import com.habitbuilder.achievement.data.ExperienceUpdateType
+import com.habitbuilder.habit.data.Habit
 import com.habitbuilder.habit.data.HabitRepository
 import com.habitbuilder.habit.data.ScheduledHabitsEvent
 import com.habitbuilder.mission.data.Mission
@@ -16,6 +19,7 @@ import com.habitbuilder.mission.data.MissionRepository
 import com.habitbuilder.mission.data.ScheduledMissionEvent
 import com.habitbuilder.mission.data.SearchDailyMissionsEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -26,7 +30,8 @@ import javax.inject.Inject
 class MissionListViewModel @Inject constructor(
     private val missionRepository: MissionRepository,
     private val habitRepository: HabitRepository,
-    private val achievementRepository: AchievementRepository
+    private val achievementRepository: AchievementRepository,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
     val newScheduledMission: MediatorLiveData<ScheduledMissionEvent> = MediatorLiveData<ScheduledMissionEvent>()
     val currentLocalDate: MutableLiveData<LocalDate> = MutableLiveData()
@@ -61,20 +66,32 @@ class MissionListViewModel @Inject constructor(
     }
 
     fun insert(vararg missions: Mission) {
-        viewModelScope.launch (Dispatchers.IO){
+        viewModelScope.launch (dispatcher){
             missionRepository.insert(*missions)
         }
     }
 
-    fun update(missionDetail: MissionDetail) {
-        viewModelScope.launch (Dispatchers.IO) {
+    fun update(mission:Mission) {
+        viewModelScope.launch (dispatcher) {
+            missionRepository.update(mission)
+        }
+    }
+
+    fun increaseExperiencePoints(habit: Habit){
+        viewModelScope.launch (dispatcher) {
+            achievementRepository.update(habit, ExperienceUpdateType.INCREASE)
+        }
+    }
+
+    fun setMissionComplete(missionDetail: MissionDetail, updateType: ExperienceUpdateType){
+        viewModelScope.launch (dispatcher) {
             missionRepository.update(missionDetail.mission)
-            achievementRepository.update(missionDetail.habit, missionDetail.mission.isCompleted)
+            achievementRepository.update(missionDetail.habit, updateType)
         }
     }
 
     fun delete(mission: Mission) {
-        viewModelScope.launch (Dispatchers.IO) {
+        viewModelScope.launch (dispatcher) {
             missionRepository.delete(mission)
         }
     }

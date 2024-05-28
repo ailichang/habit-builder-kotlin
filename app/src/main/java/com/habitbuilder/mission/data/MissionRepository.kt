@@ -2,11 +2,18 @@ package com.habitbuilder.mission.data
 
 import androidx.lifecycle.LiveData
 import com.habitbuilder.habit.data.Habit
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.time.LocalDate
 import java.util.UUID
 import javax.inject.Inject
 
 class MissionRepository @Inject constructor(private val missionDao: MissionDao) {
+    suspend fun isDailyMissionCompleted(habitId: UUID, localDate:LocalDate):Boolean?{
+        return missionDao.isDailyMissionCompleted(habitId, localDate.year, localDate.monthValue, localDate.dayOfMonth)
+    }
+
     fun getDailyMissions(year: Int, month: Int, day: Int): LiveData<List<Mission>>{
         return missionDao.getDailyMissions(year, month, day)
     }

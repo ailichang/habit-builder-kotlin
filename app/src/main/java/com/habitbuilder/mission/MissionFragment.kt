@@ -14,10 +14,16 @@ import com.habitbuilder.R
 import com.habitbuilder.mission.data.MissionDetail
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.habitbuilder.achievement.data.ExperienceUpdateType
+import com.habitbuilder.habit.data.Habit
+import com.habitbuilder.mission.MissionViewHolder.MissionClickedCallback
+import com.habitbuilder.mission.data.Mission
+import com.habitbuilder.mission.dialog.MissionDetailDialogFragment
+import com.habitbuilder.mission.dialog.MissionDetailDialogFragment.MissionDetailDialogCallback
 import java.time.LocalDate
 
 
-class MissionFragment: Fragment(){
+class MissionFragment: Fragment(), MissionClickedCallback, MissionDetailDialogCallback{
     companion object{
         const val MISSION_KEY = "MISSION"
     }
@@ -48,13 +54,13 @@ class MissionFragment: Fragment(){
         incompleteRecyclerView = view.findViewById(R.id.mission_recyclerview)
         missionListViewModel =
             ViewModelProvider(requireActivity())[MissionListViewModel::class.java]
-        completedAdapter = MissionAdapter(parentFragmentManager, isEnabled = false)
+        completedAdapter = MissionAdapter(isEnabled = false, this)
         val completeItemTouchHelper =
             ItemTouchHelper(MissionItemTouchCallback(false, completedAdapter, missionListViewModel))
         completeItemTouchHelper.attachToRecyclerView(completedRecyclerView)
         completedRecyclerView.layoutManager = LinearLayoutManager(view.context)
         completedRecyclerView.adapter = completedAdapter
-        incompleteAdapter = MissionAdapter(parentFragmentManager, isEnabled = true)
+        incompleteAdapter = MissionAdapter(isEnabled = true, this)
         val incompleteItemTouchHelper =
             ItemTouchHelper(MissionItemTouchCallback(true, incompleteAdapter, missionListViewModel))
         incompleteItemTouchHelper.attachToRecyclerView(incompleteRecyclerView)
@@ -98,6 +104,22 @@ class MissionFragment: Fragment(){
         emptyMissionsMessage.visibility =
             if (isCompletedListEmpty && isIncompleteListEmpty) View.VISIBLE else View.GONE
     }
+
+    override fun onIncreaseExperiencePoints(habit: Habit) {
+        missionListViewModel.increaseExperiencePoints(habit)
+    }
+
+    override fun onUpdateMission(mission: Mission) {
+        missionListViewModel.update(mission)
+    }
+
+    override fun onMissionClicked(missionDetail: MissionDetail) {
+        val missionDetailFragment = MissionDetailDialogFragment(this)
+        val args = Bundle()
+        args.putParcelable(MISSION_KEY, missionDetail)
+        missionDetailFragment.arguments = args
+        missionDetailFragment.show(parentFragmentManager, MissionViewHolder.DIALOG_MISSION_DETAIL_TAG)
+    }
 }
 
 class MissionItemTouchCallback(private var isItemEnabled: Boolean, private var adapter:MissionAdapter, private var viewModel:MissionListViewModel) : ItemTouchHelper.Callback() {
@@ -123,7 +145,7 @@ class MissionItemTouchCallback(private var isItemEnabled: Boolean, private var a
                 val missionDetail:MissionDetail = adapter.missionList[viewHolder.bindingAdapterPosition]
                 val isCompleted: Boolean = !missionDetail.mission.isCompleted
                 missionDetail.mission.setMissionCompleted(isCompleted)
-                viewModel.update(missionDetail)
+                viewModel.setMissionComplete(missionDetail, if(isCompleted) ExperienceUpdateType.INCREASE else ExperienceUpdateType.DECREASE)
                 adapter.onItemSwiped(viewHolder.bindingAdapterPosition)
             }
             else ->{}

@@ -2,15 +2,14 @@ package com.habitbuilder.mission
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.habitbuilder.R
 import com.habitbuilder.mission.data.MissionDetail
 import java.util.Collections
 
 class MissionAdapter(
-    private val fragmentManager: FragmentManager,
-    private val isEnabled:Boolean = false
+    private val isEnabled:Boolean = false,
+    private val missionClickedCallback: MissionViewHolder.MissionClickedCallback
 ): RecyclerView.Adapter<MissionViewHolder>(), ItemTouchHelperAdapter {
     var missionList: List<MissionDetail> = ArrayList()
         set(value) {
@@ -23,7 +22,7 @@ class MissionAdapter(
             parent,
             false
         )
-        return MissionViewHolder(itemView, fragmentManager)
+        return MissionViewHolder(itemView, missionClickedCallback)
     }
 
     override fun onBindViewHolder(holder: MissionViewHolder, position: Int) {

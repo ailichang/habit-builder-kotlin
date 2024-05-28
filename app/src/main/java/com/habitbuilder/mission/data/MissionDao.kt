@@ -12,6 +12,10 @@ import java.util.UUID
 
 @Dao
 interface MissionDao {
+
+    @Query("SELECT is_completed FROM mission_table WHERE habit_id =:habitId AND mission_year= :year AND mission_month = :month AND mission_day = :day")
+    suspend fun isDailyMissionCompleted(habitId: UUID, year: Int, month: Int, day: Int): Boolean?
+
     @Query("SELECT * FROM mission_table WHERE mission_year= :year AND mission_month = :month AND mission_day = :day")
     fun getDailyMissions(year: Int, month: Int, day: Int): LiveData<List<Mission>>
 
@@ -46,6 +50,6 @@ interface MissionDao {
     @Delete
     suspend fun delete(vararg mission: Mission)
 
-    @Query("DELETE FROM mission_table WHERE habit_id= :habitIds AND mission_year =:year AND mission_month=:month AND mission_day=:day")
-    suspend fun delete(habitIds: UUID, year: Int, month: Int, day: Int)
+    @Query("DELETE FROM mission_table WHERE habit_id= :habitId AND mission_year =:year AND mission_month=:month AND mission_day=:day")
+    suspend fun delete(habitId: UUID, year: Int, month: Int, day: Int)
 }
