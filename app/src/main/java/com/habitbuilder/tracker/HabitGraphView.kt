@@ -35,6 +35,7 @@ class HabitGraphView(context: Context, attrs: AttributeSet) : View(context, attr
     private var scheduledFutureDatePaint: DailyRecordPaint
     private var scheduledPastDueDatePaint: DailyRecordPaint
     private var unscheduledDatePaint: DailyRecordPaint
+    private var unscheduledTodayDatePaint: DailyRecordPaint
     private var weekOfDayPaint: Paint
     private var textBounds: Rect
     private lateinit var scheduledDays: ArrayList<Boolean>
@@ -64,6 +65,7 @@ class HabitGraphView(context: Context, attrs: AttributeSet) : View(context, attr
         scheduledFutureDatePaint = DailyRecordPaint(unmarkedTextPaint, unmarkedBackgroundPaint)
         scheduledPastDueDatePaint = DailyRecordPaint(pastTextPaint, pastBackgroundPaint)
         unscheduledDatePaint = DailyRecordPaint(unscheduledTextPaint)
+        unscheduledTodayDatePaint = DailyRecordPaint(categoryPaint)
         textBounds = Rect()
         circlePerRow = DayOfWeek.entries.size
         totalCircles = YearMonth.now().lengthOfMonth()
@@ -187,7 +189,7 @@ class HabitGraphView(context: Context, attrs: AttributeSet) : View(context, attr
     private fun getDailyRecordPaint(dayOfMonth: Int): DailyRecordPaint {
         currentDayOfMonth = LocalDate.now().dayOfMonth
         val date: LocalDate = LocalDate.of(year, month, dayOfMonth)
-        var dailyRecordPaint: DailyRecordPaint = unscheduledDatePaint
+        var dailyRecordPaint: DailyRecordPaint =  if (dayOfMonth == currentDayOfMonth) unscheduledTodayDatePaint else unscheduledDatePaint
         if (scheduledDays[date.dayOfWeek.value - 1]) {
             dailyRecordPaint = if (completedDays[dayOfMonth - 1]) scheduledCompletedDatePaint else
                 if (dayOfMonth < currentDayOfMonth) {
