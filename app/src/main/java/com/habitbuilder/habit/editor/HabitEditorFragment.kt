@@ -243,7 +243,7 @@ class HabitEditorFragment : Fragment(){
         if (validateCurrentHabit()) {
             prepareCurrentHabit()
             if (isNew) {
-                currentHabit?.let { insertHabit(it) }
+                currentHabit?.let { createHabit(it) }
             } else {
                 currentHabit?.let { newHabit ->
                     previousHabit?.let { oldHabit ->
@@ -290,8 +290,8 @@ class HabitEditorFragment : Fragment(){
         alertDialogBuilder.create().show()
     }
 
-    private fun insertHabit(habit: Habit) {
-        habitEditorViewModel.insert(habit)
+    private fun createHabit(habit: Habit) {
+        habitEditorViewModel.create(habit)
         Snackbar.make(requireView(),getText(R.string.message_habit_created), Snackbar.LENGTH_SHORT ).show()
     }
 

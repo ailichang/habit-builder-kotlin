@@ -23,7 +23,7 @@ class HabitEditorViewModel @Inject constructor(
     private val achievementRepository: AchievementRepository,
     @IoDispatcher private val dispatcher: CoroutineDispatcher): ViewModel() {
 
-    fun insert(habit: Habit) {
+    fun create(habit: Habit) {
         viewModelScope.launch(dispatcher){
             habitRepository.insert(habit)
             missionRepository.insert(Mission(habit, LocalDate.now()))
@@ -40,7 +40,7 @@ class HabitEditorViewModel @Inject constructor(
                         achievementRepository.update(oldHabit, ExperienceUpdateType.DECREASE)
                     }
                 }
-                missionRepository.delete(oldHabit.habitId, today)
+                missionRepository.delete(listOf(oldHabit.habitId), today)
             } else if(!oldHabit.isScheduled(today.dayOfWeek) && newHabit.isScheduled(today.dayOfWeek)){
                 missionRepository.insert(Mission(newHabit, today))
             }

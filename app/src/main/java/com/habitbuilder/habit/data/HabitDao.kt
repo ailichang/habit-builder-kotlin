@@ -12,10 +12,10 @@ import java.util.UUID
 interface HabitDao {
 
     @Query("SELECT * FROM habit_table ORDER BY priority")
-    fun getHabitList(): LiveData<List<Habit>>
+    fun getHabitsOrderByPriority(): LiveData<List<Habit>>
 
-    @Query("SELECT habit_id FROM habit_table")
-    fun getHabitIdsList(): LiveData<List<UUID>>
+    @Query("SELECT * FROM habit_table")
+    suspend fun getHabits(): List<Habit>?
 
     @Insert
     suspend fun insert(vararg habit: Habit)

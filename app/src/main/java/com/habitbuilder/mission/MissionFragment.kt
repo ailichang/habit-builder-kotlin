@@ -81,10 +81,8 @@ class MissionFragment: Fragment(), MissionClickedCallback, MissionDetailDialogCa
             }
         }
 
-        missionListViewModel.newScheduledMission.observe(viewLifecycleOwner){ event ->
-            event?.getMissionListIfNotHandled()?.let{
-                missionListViewModel.insert(*it.toTypedArray())
-            }
+        missionListViewModel.currentLocalDate.observe(viewLifecycleOwner){
+            missionListViewModel.scheduleNewMission(it)
         }
 
         return view
@@ -110,7 +108,7 @@ class MissionFragment: Fragment(), MissionClickedCallback, MissionDetailDialogCa
     }
 
     override fun onUpdateMission(mission: Mission) {
-        missionListViewModel.update(mission)
+        missionListViewModel.updateMission(mission)
     }
 
     override fun onMissionClicked(missionDetail: MissionDetail) {
