@@ -2,7 +2,8 @@
  An Android app that helps you build new habits
 
  The app is still in development progress. Please check the "develop" branch for the newest change.
- [Download apk (0528 develop build) & screen recordings] (https://drive.google.com/drive/folders/1fP32MVEuwXPxf8w7VRqzK844pd3e_EZE?usp=sharing)
+ 
+ [Download apk (0528 develop build) & screen recordings](https://drive.google.com/drive/folders/1fP32MVEuwXPxf8w7VRqzK844pd3e_EZE?usp=sharing)
  
  ## The features included:
  ### Create a habit with conditions:
