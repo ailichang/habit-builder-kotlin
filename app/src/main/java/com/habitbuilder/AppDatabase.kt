@@ -24,8 +24,8 @@ import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.time.LocalDate
 import java.util.UUID
-import java.util.concurrent.Executors
 
 @Database (entities = [Habit::class, Mission::class, Achievement::class], version = 1, exportSchema = false)
 @TypeConverters(Converter::class)
@@ -44,9 +44,7 @@ abstract class AppDatabase : RoomDatabase(){
                     .addCallback(object:Callback(){
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
-                            Executors.newSingleThreadExecutor().execute {
-                                fillInitData(context, scope)
-                            }
+                            fillInitData(context, scope)
                         }
                     }).build()
                 return instance as AppDatabase
@@ -65,6 +63,15 @@ abstract class AppDatabase : RoomDatabase(){
                     e.printStackTrace()
                 }
             }
+
+            val localDate = LocalDate.now()
+            val missionList:ArrayList<Mission> = ArrayList()
+            for(habit in habitList){
+                if(habit.isScheduled(localDate)) {
+                    missionList.add(Mission(habit, localDate))
+                }
+            }
+
             val achievementJsonArray: JSONArray? =
                 JsonFileReader.loadJsonArray(context, R.raw.achievement_init, "achievements")
             val achievementList:ArrayList<Achievement> = ArrayList()
@@ -82,6 +89,7 @@ abstract class AppDatabase : RoomDatabase(){
                 scope.launch {
                     val deferred = async { this@run.getHabitDao().insert(*habitList.toTypedArray()) }
                     deferred.await()
+                    this@run.getMissionDao().insert(*missionList.toTypedArray())
                     this@run.getAchievementDao().insert(*achievementList.toTypedArray())
                 }
             }

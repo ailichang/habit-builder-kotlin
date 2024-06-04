@@ -72,7 +72,7 @@ data class Habit(
     val createdDate: String = LocalDate.now().toString(),
 
     @ColumnInfo(name = "scheduled_days")
-    val scheduledDays: ArrayList<Boolean>
+    val scheduledDays: List<Boolean>
 ) : Parcelable {
     companion object{
         fun getExperiencePoints(priority: Priority): Long {
@@ -83,8 +83,8 @@ data class Habit(
             }
         }
     }
-    fun isScheduled(dayOfWeek: DayOfWeek): Boolean {
-        return scheduledDays[dayOfWeek.value - 1]
+    fun isScheduled(localDate: LocalDate): Boolean {
+        return scheduledDays[localDate.dayOfWeek.value - 1]
     }
 
 }

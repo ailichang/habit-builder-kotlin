@@ -14,6 +14,6 @@ class HabitListViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun getHabitList(): LiveData<List<Habit>> {
-        return habitRepository.getHabitList()
+        return habitRepository.getOrderedHabitList()
     }
 }

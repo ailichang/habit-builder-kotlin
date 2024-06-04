@@ -8,20 +8,14 @@ import com.habitbuilder.habit.data.Type
 
 class Converter {
     @TypeConverter
-    fun fromBooleanArraylist(booleans: ArrayList<Boolean>): String {
-        val stringBuilder = StringBuilder()
-        booleans.forEach { boolean ->
-            stringBuilder.append(boolean).append(",")
-        }
-        return stringBuilder.toString()
+    fun fromBooleanArraylist(booleans: List<Boolean>): String {
+        return booleans.joinToString(separator = ",")
     }
 
     @TypeConverter
-    fun toBooleanArrayList(string: String): ArrayList<Boolean> {
-        val result = ArrayList<Boolean>()
+    fun toBooleanArrayList(string: String): List<Boolean> {
         val list: List<String> = string.split(",")
-        list.map { result.add(it.toBoolean()) }
-        return result
+        return list.map { it.toBoolean() }
     }
 
     @TypeConverter

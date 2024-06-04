@@ -1,11 +1,10 @@
-package com.habitbuilder.mission.dialog
+package com.habitbuilder.mission
 
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.MutableLiveData
 import com.habitbuilder.R
 import com.habitbuilder.habit.data.Type
-import com.habitbuilder.mission.MissionFragment
 import com.habitbuilder.mission.data.MissionDetail
 import com.habitbuilder.util.TimeUtil
 import com.habitbuilder.util.WidgetFormatter.Companion.setCondition
@@ -173,7 +171,7 @@ class MissionDetailDialogFragment(private val missionDetailDialogCallback: Missi
                     }
                 }
                 timerResetButton.setOnClickListener {
-                    timer.setRemainingTimeInMillis(0)
+                    timer.reset()
                     timerResetButton.visibility = View.GONE
                     timerStartButton.setText(R.string.timer_start)
                     timerStartButton.visibility = View.VISIBLE

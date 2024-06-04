@@ -63,10 +63,10 @@ data class Mission(
     fun setMissionCompleted(completed: Boolean) {
         isCompleted = completed
         timer?.let {
-            it.setRemainingTimeInMillis(if (isCompleted) it.duration else 0L)
+            it.setTime(if (isCompleted) it.duration else 0L)
         }
         counter?.let{
-            it.currentCount = (if (isCompleted) it.targetCount else 0)
+            it.setCount(if (isCompleted) it.targetCount else 0)
         }
     }
 

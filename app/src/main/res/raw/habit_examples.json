@@ -8,7 +8,7 @@
       "start_time": "11:00",
       "end_time": "12:00",
       "location": "park",
-      "target_duration": 600,
+      "target_duration": 10,
       "priority": 0,
       "category":"FITNESS",
       "frequency": "EVERYDAY",
@@ -29,7 +29,7 @@
     },
     {
       "id": "3067d26a-e3c8-4a8d-b82d-257a3d9fc403",
-      "title": "update habit app",
+      "title": "Update habit app",
       "description": "Do and learn :)",
       "start_time": "03:00",
       "location": "pc",

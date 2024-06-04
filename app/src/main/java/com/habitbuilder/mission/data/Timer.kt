@@ -2,6 +2,7 @@ package com.habitbuilder.mission.data
 
 import android.os.CountDownTimer
 import android.os.Parcelable
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import androidx.room.ColumnInfo
 import androidx.room.Ignore
@@ -28,11 +29,12 @@ data class Timer(
 
     @IgnoredOnParcel
     @Ignore
-    val remainingTime: MutableLiveData<Long> = MutableLiveData<Long>(duration)
+    val remainingTime: MutableLiveData<Long> = MutableLiveData<Long>()
 
+    @VisibleForTesting
     @IgnoredOnParcel
     @Ignore
-    private var countDownTimer: CountDownTimer? = null
+    var countDownTimer: CountDownTimer? = null
 
     @IgnoredOnParcel
     @Ignore
@@ -44,31 +46,34 @@ data class Timer(
 
     @IgnoredOnParcel
     @Ignore
-    var progress: Double =
-        if (duration == 0L) 0.0 else min(elapsedTime / duration.toDouble(), 1.0)
-
-
-    @IgnoredOnParcel
-    @Ignore
-    var progressText: String =
-        String.format(Locale.getDefault(), "%d%%", (progress * 100.0).toInt())
-
+    var progress: Double = 0.0
+        get() = if (duration == 0L) 0.0 else min(elapsedTime / duration.toDouble(), 1.0)
+        private set
 
     @IgnoredOnParcel
     @Ignore
-    var remainingTimeText: String = TimeUtil.secondsToHMSString(remainingTime.value?: 0L, TimeUtil.DurationStyle.COLON)
-
+    var progressText: String = "0%"
+        get() = String.format(Locale.getDefault(), "%d%%", (progress * 100.0).toInt())
+        private set
 
     @IgnoredOnParcel
     @Ignore
-    var isTargetReached:Boolean = elapsedTime >= duration
+    var remainingTimeText: String = "00:00"
+        get() = TimeUtil.secondsToHMSString(remainingTime.value?: 0L, TimeUtil.DurationStyle.COLON)
+        private set
+
+    @IgnoredOnParcel
+    @Ignore
+    var isTargetReached:Boolean = false
+        get() = elapsedTime >= duration
+        private set
 
     init {
-        setRemainingTimeInMillis(elapsedTime)
+        setTime(elapsedTime)
         isTimerInitialized = false
     }
 
-    fun setRemainingTimeInMillis(elapsedTime: Long){
+    fun setTime(elapsedTime: Long){
         this.elapsedTime = elapsedTime
         remainingTime.postValue(max(0, duration - elapsedTime))
     }
@@ -76,8 +81,7 @@ data class Timer(
     fun start(){
         this.countDownTimer = object : CountDownTimer((remainingTime.value?:0L) * oneSecondInMillis, countDownIntervalInMillis) {
             override fun onTick(millisUntilFinished: Long) {
-                remainingTime.value = millisUntilFinished/oneSecondInMillis
-                elapsedTime = duration - (remainingTime.value?:0L).toInt()
+                setTime(duration - millisUntilFinished/oneSecondInMillis)
             }
             override fun onFinish() {
                 isTimerFinished = true
@@ -90,12 +94,15 @@ data class Timer(
         countDownTimer?.cancel()
     }
 
+    fun reset(){
+        setTime(0)
+    }
+
     fun cancel(){
+        setTime(0)
         countDownTimer?.cancel()
         isTimerFinished = false
         isTimerInitialized = false
-        remainingTime.value = duration
-        elapsedTime = 0
     }
 }
 

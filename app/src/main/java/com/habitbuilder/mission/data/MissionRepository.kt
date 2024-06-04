@@ -1,5 +1,6 @@
 package com.habitbuilder.mission.data
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import com.habitbuilder.habit.data.Habit
 import java.time.LocalDate
@@ -7,34 +8,6 @@ import java.util.UUID
 import javax.inject.Inject
 
 class MissionRepository @Inject constructor(private val missionDao: MissionDao) {
-    suspend fun isDailyMissionCompleted(habitId: UUID, localDate:LocalDate):Boolean?{
-        return missionDao.isDailyMissionCompleted(habitId, localDate.year, localDate.monthValue, localDate.dayOfMonth)
-    }
-
-    suspend fun getDailyMissionHabitIds(localDate: LocalDate): List<UUID>?{
-        return missionDao.getDailyMissions(localDate.year, localDate.monthValue, localDate.dayOfMonth)?.map { it.mission.habitId }
-    }
-
-    suspend fun getDailyMissions(localDate: LocalDate): List<MissionDetail>?{
-        return missionDao.getDailyMissions(localDate.year, localDate.monthValue, localDate.dayOfMonth)
-    }
-
-    fun getIncompleteDailyMissions(localDate: LocalDate): LiveData<List<MissionDetail>> {
-        return missionDao.getIncompleteDailyMissions(localDate.year, localDate.monthValue, localDate.dayOfMonth)
-    }
-
-    fun getCompletedDailyMissions(localDate: LocalDate): LiveData<List<MissionDetail>>{
-        return missionDao.getCompletedDailyMissions(localDate.year, localDate.monthValue, localDate.dayOfMonth)
-    }
-
-    fun getMonthlyMissions(year: Int, month: Int): LiveData<Map<Habit, List<Mission>>> {
-        return missionDao.getMonthlyMissions(year, month)
-    }
-
-    fun getNonExistMissions(): LiveData<Map<Habit, List<Mission>>> {
-        return missionDao.getNonExistMissions()
-    }
-
     suspend fun insert(vararg missions: Mission){
         missionDao.insert(*missions)
     }
@@ -55,4 +28,32 @@ class MissionRepository @Inject constructor(private val missionDao: MissionDao) 
         missionDao.delete(habitIds, localDate.year, localDate.monthValue, localDate.dayOfMonth)
     }
 
+    suspend fun isDailyMissionCompleted(habitId: UUID, localDate:LocalDate):Boolean?{
+        return missionDao.isDailyMissionCompleted(habitId, localDate.year, localDate.monthValue, localDate.dayOfMonth)
+    }
+
+    suspend fun getDailyMissionHabitIds(localDate: LocalDate): List<UUID>?{
+        return missionDao.getDailyMissions(localDate.year, localDate.monthValue, localDate.dayOfMonth)?.map { it.mission.habitId }
+    }
+
+    suspend fun getDailyMissions(localDate: LocalDate): List<MissionDetail>?{
+        return missionDao.getDailyMissions(localDate.year, localDate.monthValue, localDate.dayOfMonth)
+    }
+
+    fun getIncompleteDailyMissions(localDate: LocalDate): LiveData<List<MissionDetail>> {
+        return missionDao.getIncompleteDailyMissions(localDate.year, localDate.monthValue, localDate.dayOfMonth)
+    }
+
+    fun getCompletedDailyMissions(localDate: LocalDate): LiveData<List<MissionDetail>>{
+        return missionDao.getCompletedDailyMissions(localDate.year, localDate.monthValue, localDate.dayOfMonth)
+    }
+
+    suspend fun getMonthlyMissions(year: Int, month: Int): Map<Habit, List<Mission>>? {
+        return missionDao.getMonthlyMissions(year, month)
+    }
+
+    @VisibleForTesting
+    suspend fun getMissions():List<Mission>?{
+        return missionDao.getMissions()
+    }
 }

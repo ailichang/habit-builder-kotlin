@@ -28,19 +28,20 @@ data class Counter (
 
     fun add() {
         if (currentCount < targetCount) {
-            currentCount++
-            currentCountLiveData.postValue(currentCount)
+            setCount(++currentCount)
         }
     }
 
     fun minus() {
         if (currentCount == 0) return
-        currentCount--
-        currentCountLiveData.postValue(currentCount)
+        setCount(--currentCount)
     }
 
     fun reset() {
-        currentCount = 0
+        setCount(0)
+    }
+    fun setCount(count:Int){
+        currentCount = count
         currentCountLiveData.postValue(currentCount)
     }
 

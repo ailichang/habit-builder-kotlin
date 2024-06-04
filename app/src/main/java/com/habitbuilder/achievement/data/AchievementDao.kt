@@ -22,5 +22,5 @@ interface AchievementDao {
     suspend fun update(habitId: UUID, experiencePoints: Long)
 
     @Query("DELETE FROM achievement_table WHERE habit_id = :habitId ")
-    fun deleteByHabitId(habitId: UUID)
+    suspend fun deleteByHabitId(habitId: UUID)
 }

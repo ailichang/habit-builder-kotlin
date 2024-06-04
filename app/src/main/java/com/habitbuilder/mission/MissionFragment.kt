@@ -18,8 +18,7 @@ import com.habitbuilder.achievement.data.ExperienceUpdateType
 import com.habitbuilder.habit.data.Habit
 import com.habitbuilder.mission.MissionViewHolder.MissionClickedCallback
 import com.habitbuilder.mission.data.Mission
-import com.habitbuilder.mission.dialog.MissionDetailDialogFragment
-import com.habitbuilder.mission.dialog.MissionDetailDialogFragment.MissionDetailDialogCallback
+import com.habitbuilder.mission.MissionDetailDialogFragment.MissionDetailDialogCallback
 import java.time.LocalDate
 
 
@@ -82,7 +81,9 @@ class MissionFragment: Fragment(), MissionClickedCallback, MissionDetailDialogCa
         }
 
         missionListViewModel.currentLocalDate.observe(viewLifecycleOwner){
-            missionListViewModel.scheduleNewMission(it)
+            if(it != null) {
+                missionListViewModel.scheduleNewMission(it)
+            }
         }
 
         return view
@@ -94,13 +95,15 @@ class MissionFragment: Fragment(), MissionClickedCallback, MissionDetailDialogCa
     }
 
     private fun setEmptyMessages() {
-        val isIncompleteListEmpty: Boolean = incompleteAdapter.itemCount == 0
-        val isCompletedListEmpty: Boolean = completedAdapter.itemCount == 0
-        completedRecyclerView.visibility = if (isCompletedListEmpty) View.GONE else View.VISIBLE
-        incompleteRecyclerView.visibility = if (isIncompleteListEmpty) View.GONE else View.VISIBLE
-        emptyCompletedListMessage.visibility = if (isCompletedListEmpty) View.VISIBLE else View.GONE
-        emptyMissionsMessage.visibility =
-            if (isCompletedListEmpty && isIncompleteListEmpty) View.VISIBLE else View.GONE
+        activity?.runOnUiThread {
+            val isIncompleteListEmpty: Boolean = incompleteAdapter.itemCount == 0
+            val isCompletedListEmpty: Boolean = completedAdapter.itemCount == 0
+            completedRecyclerView.visibility = if (isCompletedListEmpty) View.GONE else View.VISIBLE
+            incompleteRecyclerView.visibility = if (isIncompleteListEmpty) View.GONE else View.VISIBLE
+            emptyCompletedListMessage.visibility = if (isCompletedListEmpty) View.VISIBLE else View.GONE
+            emptyMissionsMessage.visibility =
+                if (isCompletedListEmpty && isIncompleteListEmpty) View.VISIBLE else View.GONE
+        }
     }
 
     override fun onIncreaseExperiencePoints(habit: Habit) {

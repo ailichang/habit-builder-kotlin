@@ -33,7 +33,7 @@ class WidgetFormatter {
             timeText.text = stringBuilder.toString()
         }
 
-        fun setScheduledDays(scheduledDays: TextView, isScheduled: ArrayList<Boolean>) {
+        fun setScheduledDays(scheduledDays: TextView, isScheduled: List<Boolean>) {
             val context = scheduledDays.context
             var weekdayCount = 0
             var weekendCount = 0
@@ -127,7 +127,6 @@ class WidgetFormatter {
                         TimeUtil.secondsToHMSString(habit.targetDuration, TimeUtil.DurationStyle.HMS)
                     )
                 }
-                else -> {}
             }
         }
 

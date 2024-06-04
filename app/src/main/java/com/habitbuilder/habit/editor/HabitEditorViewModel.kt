@@ -26,26 +26,29 @@ class HabitEditorViewModel @Inject constructor(
     fun create(habit: Habit) {
         viewModelScope.launch(dispatcher){
             habitRepository.insert(habit)
-            missionRepository.insert(Mission(habit, LocalDate.now()))
+            val localDate = LocalDate.now()
+            if(habit.isScheduled(localDate)) {
+                missionRepository.insert(Mission(habit, localDate))
+            }
             achievementRepository.insert(Achievement(habitId = habit.habitId))
         }
     }
 
     fun update(oldHabit:Habit, newHabit: Habit) {
         viewModelScope.launch(dispatcher){
-            val today = LocalDate.now()
-            if(oldHabit.isScheduled(today.dayOfWeek) && !newHabit.isScheduled(today.dayOfWeek)){
-                missionRepository.isDailyMissionCompleted(oldHabit.habitId, today)?.let {
+            val localDate = LocalDate.now()
+            if(oldHabit.isScheduled(localDate) && !newHabit.isScheduled(localDate)){
+                missionRepository.isDailyMissionCompleted(oldHabit.habitId, localDate)?.let {
                     if (it) {
                         achievementRepository.update(oldHabit, ExperienceUpdateType.DECREASE)
                     }
                 }
-                missionRepository.delete(listOf(oldHabit.habitId), today)
-            } else if(!oldHabit.isScheduled(today.dayOfWeek) && newHabit.isScheduled(today.dayOfWeek)){
-                missionRepository.insert(Mission(newHabit, today))
+                missionRepository.delete(listOf(oldHabit.habitId), localDate)
+            } else if(!oldHabit.isScheduled(localDate) && newHabit.isScheduled(localDate)){
+                missionRepository.insert(Mission(newHabit, localDate))
             }
             habitRepository.update(newHabit)
-            missionRepository.updateCondition(newHabit.habitId, today, newHabit.targetCount, newHabit.targetDuration)
+            missionRepository.updateCondition(newHabit.habitId, localDate, newHabit.targetCount, newHabit.targetDuration)
         }
     }
 

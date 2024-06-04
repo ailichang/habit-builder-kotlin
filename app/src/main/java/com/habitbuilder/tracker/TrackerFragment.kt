@@ -18,6 +18,8 @@ import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class TrackerFragment: Fragment() {
+    private val trackerViewModel:TrackerViewModel by viewModels<TrackerViewModel>()
+    private lateinit var currentMonthText:TextView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,15 +35,17 @@ class TrackerFragment: Fragment() {
         val trackerAdapter = TrackerAdapter()
         recyclerView.adapter = trackerAdapter
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val trackerViewModel:TrackerViewModel by viewModels<TrackerViewModel>()
-        val currentMonthText = view.findViewById<TextView>(R.id.tracker_month_text)
-        val today = LocalDate.now()
-        val dateTimeFormatter = DateTimeFormatter.ofPattern("MMM, y")
-        val monthText = dateTimeFormatter.format(today)
-        currentMonthText.text = monthText
-
-        trackerViewModel.currentLocalDate.value = LocalDate.now()
+        currentMonthText = view.findViewById(R.id.tracker_month_text)
         trackerViewModel.monthlyHabitRecordList.observe(viewLifecycleOwner, trackerAdapter::submitList)
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val localDate = LocalDate.now()
+        val dateTimeFormatter = DateTimeFormatter.ofPattern("MMM, y")
+        val monthText = dateTimeFormatter.format(localDate)
+        currentMonthText.text = monthText
+        trackerViewModel.currentLocalDate.value = LocalDate.now()
     }
 }

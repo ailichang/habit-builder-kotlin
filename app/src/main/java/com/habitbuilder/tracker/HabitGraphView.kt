@@ -38,8 +38,8 @@ class HabitGraphView(context: Context, attrs: AttributeSet) : View(context, attr
     private var unscheduledTodayDatePaint: DailyRecordPaint
     private var weekOfDayPaint: Paint
     private var textBounds: Rect
-    private lateinit var scheduledDays: ArrayList<Boolean>
-    private lateinit var completedDays: ArrayList<Boolean>
+    private lateinit var scheduledDays: List<Boolean>
+    private lateinit var completedDays: List<Boolean>
 
     init {
         val numTextSize = convertDpToPixel(context, dateTextSize)
@@ -156,8 +156,8 @@ class HabitGraphView(context: Context, attrs: AttributeSet) : View(context, attr
         year: Int,
         month: Int,
         @ColorInt categoryColor: Int,
-        scheduledDays: ArrayList<Boolean>,
-        completedDays: ArrayList<Boolean>
+        scheduledDays: List<Boolean>,
+        completedDays: List<Boolean>
     ) {
         this.year = year
         this.month = month

@@ -16,6 +16,8 @@ import com.habitbuilder.mission.data.MissionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import java.time.LocalDate
 import java.util.UUID
 import java.util.stream.Collectors
@@ -32,6 +34,7 @@ class MissionListViewModel @Inject constructor(
     val currentLocalDate: MutableLiveData<LocalDate> = MutableLiveData()
 
     private var scheduledMissionLocalDate: LocalDate? = null
+    private val mutex = Mutex()
 
     fun getCompletedDailyMissions(): LiveData<List<MissionDetail>> {
         return currentLocalDate.switchMap { missionRepository.getCompletedDailyMissions(it) }
@@ -41,34 +44,32 @@ class MissionListViewModel @Inject constructor(
         return currentLocalDate.switchMap { missionRepository.getIncompleteDailyMissions(it) }
     }
 
-    fun scheduleNewMission(localDate: LocalDate?){
+    fun scheduleNewMission(localDate: LocalDate){
         viewModelScope.launch (dispatcher) {
-            localDate?.let {
-                val currentMissionHabitIds:List<UUID>? = missionRepository.getDailyMissionHabitIds(it)
-                val scheduledHabits:List<Habit>? = habitRepository.getScheduledHabits(it)
-                if (scheduledMissionLocalDate?.isEqual(it) == true) return@launch
+            mutex.withLock {
+                val currentMissionHabitIds:List<UUID>? = missionRepository.getDailyMissionHabitIds(localDate)
+                val scheduledHabits:List<Habit>? = habitRepository.getScheduledHabits(localDate)
+                if (scheduledMissionLocalDate?.isEqual(localDate) == true) return@launch
                 scheduledHabits?.let { list ->
                     val missions:Array<Mission> = list.stream()
-                        .filter{ habit -> currentMissionHabitIds == null || !currentMissionHabitIds.contains(habit.habitId)}
-                        .map { habit -> Mission(habit, it)}.toArray{size -> arrayOfNulls<Mission>(size)}
+                        .filter{ habit -> currentMissionHabitIds.isNullOrEmpty() || !currentMissionHabitIds.contains(habit.habitId)}
+                        .map { habit -> Mission(habit, localDate)}.toArray{size -> arrayOfNulls<Mission>(size)}
                     if(missions.isNotEmpty()) {
-                        insertMissions(*missions)
+                        insertMissions(missions)
                     }
                 }
-                missionRepository.getDailyMissions(it)?.let { list ->
+                missionRepository.getDailyMissions(localDate)?.let { list ->
                     val missionDetails:List<MissionDetail> = list.stream()
-                        .filter{ missionDetail -> scheduledHabits == null || !scheduledHabits.map { missionDetail.mission.habitId }.contains(missionDetail.mission.habitId)}
+                        .filter{ missionDetail -> scheduledHabits.isNullOrEmpty() || !scheduledHabits.any { habit -> habit.habitId == missionDetail.mission.habitId }}
                         .collect(Collectors.toList())
                     if(missionDetails.isNotEmpty()) {
                         deleteMissions(missionDetails)
                     }
                 }
-                scheduledMissionLocalDate = it
+                scheduledMissionLocalDate = localDate
             }
         }
     }
-
-
 
     fun updateMission(mission:Mission) {
         viewModelScope.launch (dispatcher) {
@@ -88,19 +89,14 @@ class MissionListViewModel @Inject constructor(
             achievementRepository.update(missionDetail.habit, updateType)
         }
     }
-
-    private fun insertMissions(vararg missions: Mission) {
-        viewModelScope.launch (dispatcher){
-            missionRepository.insert(*missions)
-        }
+    private suspend fun insertMissions(missions: Array<Mission>) {
+        missionRepository.insert(*missions)
     }
-    private fun deleteMissions(missionDetails: List<MissionDetail>) {
-        viewModelScope.launch (dispatcher) {
-            missionRepository.delete(*missionDetails.map{ detail -> detail.mission}.toTypedArray())
-            for (missionDetail in missionDetails){
-                if(missionDetail.mission.isCompleted){
-                    achievementRepository.update(missionDetail.habit, ExperienceUpdateType.DECREASE)
-                }
+    private suspend fun deleteMissions(missionDetails: List<MissionDetail>) {
+        missionRepository.delete(*missionDetails.map{ detail -> detail.mission}.toTypedArray())
+        for (missionDetail in missionDetails){
+            if(missionDetail.mission.isCompleted){
+                achievementRepository.update(missionDetail.habit, ExperienceUpdateType.DECREASE)
             }
         }
     }

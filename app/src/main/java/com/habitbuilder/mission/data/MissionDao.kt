@@ -16,6 +16,9 @@ interface MissionDao {
     @Query("SELECT is_completed FROM mission_table WHERE habit_id =:habitId AND mission_year= :year AND mission_month = :month AND mission_day = :day")
     suspend fun isDailyMissionCompleted(habitId: UUID, year: Int, month: Int, day: Int): Boolean?
 
+    @Query("SELECT * FROM mission_table")
+    suspend fun getMissions(): List<Mission>?
+
     @Query("SELECT * FROM mission_table WHERE mission_year= :year AND mission_month = :month AND mission_day = :day")
     suspend fun getDailyMissions(year: Int, month: Int, day: Int): List<MissionDetail>?
 
@@ -28,12 +31,8 @@ interface MissionDao {
     fun getIncompleteDailyMissions(year: Int, month: Int, day: Int): LiveData<List<MissionDetail>>
 
     @Transaction
-    @Query("SELECT * FROM habit_table as h LEFT OUTER JOIN mission_table as m ON h.habit_id = m.habit_id WHERE m.habit_id IS NULL")
-    fun getNonExistMissions(): LiveData<Map<Habit, List<Mission>>>
-
-    @Transaction
     @Query("SELECT * FROM habit_table as h JOIN mission_table as m ON h.habit_id = m.habit_id WHERE mission_year = :year AND mission_month = :month ORDER BY category")
-    fun getMonthlyMissions(year: Int, month: Int): LiveData<Map<Habit, List<Mission>>>
+    suspend fun getMonthlyMissions(year: Int, month: Int): Map<Habit, List<Mission>>?
 
     @Query(
         "UPDATE mission_table SET target_count=:targetCount, duration=:duration " +
