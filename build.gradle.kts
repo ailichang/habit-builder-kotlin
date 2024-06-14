@@ -5,18 +5,14 @@ buildscript {
         mavenCentral()
         gradlePluginPortal()
     }
-    dependencies {
-        // other plugins...
-        classpath("com.android.tools.build:gradle:7.4.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.51.1")
-    }
 }
 
 plugins {
-    id("com.android.application") version "8.2.0" apply false
-    id("com.android.library") version "8.2.0" apply false
-    id("org.jetbrains.kotlin.android") version "2.0.0" apply false
-    id("com.google.devtools.ksp") version "2.0.0-1.0.22" apply false
-    id("com.google.dagger.hilt.android") version "2.51.1" apply false
+    alias(libs.plugins.com.android.application) apply false
+    alias(libs.plugins.com.android.library) apply false
+    alias(libs.plugins.org.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.org.jetbrains.kotlin.plugin.parcelize) apply false
+    alias(libs.plugins.com.google.dagger.hilt.android) apply false
+    alias(libs.plugins.com.google.devtools.ksp) apply false
+    alias(libs.plugins.compose.compiler) apply false
 }
