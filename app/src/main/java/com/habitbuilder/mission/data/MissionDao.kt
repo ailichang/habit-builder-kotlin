@@ -19,6 +19,7 @@ interface MissionDao {
     @Query("SELECT * FROM mission_table")
     suspend fun getMissions(): List<Mission>?
 
+    @Transaction
     @Query("SELECT * FROM mission_table WHERE mission_year= :year AND mission_month = :month AND mission_day = :day")
     suspend fun getDailyMissions(year: Int, month: Int, day: Int): List<MissionDetail>?
 
