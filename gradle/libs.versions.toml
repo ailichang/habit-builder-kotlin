@@ -1,6 +1,6 @@
 [versions]
 activity-compose = "1.9.0"
-androidx-compose-bom = "2024.05.00"
+androidx-compose-bom = "2024.06.00"
 androidx-junit = "1.1.5"
 appcompat = "1.7.0"
 cardview = "1.0.0"
@@ -14,7 +14,7 @@ junit = "4.13.2"
 kotlin = "2.0.0"
 kotlinx-coroutines-android = "1.8.1"
 ktx = "1.13.1"
-android-gradle-plugin = "8.2.0"
+android-gradle-plugin = "8.5.0"
 ksp = "2.0.0-1.0.22"
 hilt = "2.51.1"
 kotlin-parcelize = "2.0.0"
@@ -76,16 +76,17 @@ robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectr
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-ui-tooling-preview= { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-test-junit4= { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core" }
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-compose-material3-window-size = { group = "androidx.compose.material3", name = "material3-window-size-class" }
 androidx-compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
 androidx-compose-runtime-rxjava2 = { group = "androidx.compose.runtime", name = "runtime-rxjava2" }
+
 [plugins]
 com-android-library ={ id = "com.android.library", version.ref="android-gradle-plugin"}
 com-android-application ={ id = "com.android.application", version.ref="android-gradle-plugin"}
@@ -94,6 +95,3 @@ org-jetbrains-kotlin-plugin-parcelize = { id = "org.jetbrains.kotlin.plugin.parc
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 com-google-dagger-hilt-android = { id ="com.google.dagger.hilt.android", version.ref="hilt"}
 com-google-devtools-ksp = { id ="com.google.devtools.ksp", version.ref="ksp"}
-
-[bundles]
-androidx-compose-material-bundle = ["androidx-compose-material3","androidx-compose-material-icons-core","androidx-compose-material-icons-extended","androidx-compose-material3-window-size"]

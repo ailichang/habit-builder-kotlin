@@ -8,7 +8,7 @@
             \n&#8226; I will [do push ups] for [5 times] at [5pm] in [my living room].
             \n\nNow, click on the create habit button (the plus button) on Habit page and start your own! </string>
     <string name="question_create_habit">How to create a habit? </string>
-    <string name="answer_create_habit">" Navigate to the Habit page and click on the plus button and it will direct you to a create habit page for setting up the habit's information and schedule.          You can also click on the question marks if you need more information. After filling out, click on the save button on the top right corner.          Now, you are all set! The missions of this habit is scheduled!"</string>
+    <string name="answer_create_habit">"Navigate to the Habit page and click on the plus button and it will direct you to a create habit page for setting up the habit's information and schedule. You can also click on the question marks if you need more information. After filling out, click on the save button on the top right corner. \nNow, you are all set! The missions of this habit is scheduled!"</string>
     <string name="question_mission">What is a mission? </string>
     <string name="answer_mission">A mission is a daily task generated from your created habit list.
         \nIf you scheduled every day for persisting the habit, a new mission regarding this habit will be generated daily.</string>
